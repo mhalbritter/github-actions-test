@@ -45,5 +45,5 @@ tasks.named('test') {
 bootBuildImage {
     // archiveFile = distZip.archiveFile
     runImage = "paketobuildpacks/ubuntu-noble-run:latest"
-    environment = ['BP_JVM_VERSION': java.targetCompatibility.getMajorVersion()]
+    // environment = ['BP_JVM_VERSION': java.targetCompatibility.getMajorVersion()]
 }
