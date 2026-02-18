@@ -15,7 +15,7 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
         with:
-          version: v28.5.2
+          version: 'v29.2.1'
 
       - name: Set up JDK 25
         uses: actions/setup-java@v5
@@ -29,7 +29,7 @@ jobs:
 
       - name: Build image
         #run: ./gradlew assemble bootDistZip bootBuildImage --imageName=foo --pullPolicy=IF_NOT_PRESENT
-        run: ./gradlew bootBuildImage --imageName=foo --pullPolicy=IF_NOT_PRESENT
+        run: ./gradlew bootBuildImage
 
       - name: Show docker version
         if: always()
