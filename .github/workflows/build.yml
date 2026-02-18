@@ -30,6 +30,11 @@ jobs:
         shell: bash
         run: docker version
 
+      - name: Show docker info
+        if: always()
+        shell: bash
+        run: docker info
+
       - name: List docker images
         if: always()
         shell: bash
