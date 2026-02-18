@@ -17,7 +17,7 @@ jobs:
         with:
           java-version: '25'
           distribution: 'liberica'
-          cache: 'grade'
+          cache: 'gradle'
 
       - name: Build
         run: ./gradlew build
