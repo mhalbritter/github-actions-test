@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '4.0.2'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'application'
 }
 
 group = 'com.example'
@@ -26,4 +27,23 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootJar {
+    manifest {
+        attributes(
+                'Implementation-Version': '1.0.0',
+                'Implementation-Title': "Paketo Test"
+        )
+    }
+}
+
+application {
+    mainClass = 'com.example.demo.DemoApplication'
+}
+
+bootBuildImage {
+    archiveFile = distZip.archiveFile
+    runImage = "paketobuildpacks/ubuntu-noble-run:latest"
+    environment = ['BP_JVM_VERSION': java.targetCompatibility.getMajorVersion()]
 }
