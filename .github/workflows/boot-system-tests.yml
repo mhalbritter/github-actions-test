@@ -13,13 +13,12 @@ jobs:
         with:
           java-version: '21'
           distribution: 'liberica'
-          cache: 'gradle'
+
       - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
           java-version: '25'
           distribution: 'liberica'
-          cache: 'gradle'
 
       - name: Checkout Spring Boot
         uses: actions/checkout@v6
