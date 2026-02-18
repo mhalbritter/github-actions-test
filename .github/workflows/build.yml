@@ -23,7 +23,8 @@ jobs:
         run: ./gradlew build
 
       - name: Build image
-        run: ./gradlew assemble bootDistZip bootBuildImage --imageName=foo --pullPolicy=IF_NOT_PRESENT
+        #run: ./gradlew assemble bootDistZip bootBuildImage --imageName=foo --pullPolicy=IF_NOT_PRESENT
+        run: ./gradlew bootBuildImage --imageName=foo --pullPolicy=IF_NOT_PRESENT
 
       - name: Show docker version
         if: always()
