@@ -19,6 +19,16 @@ jobs:
           distribution: 'liberica'
           cache: 'gradle'
 
+      - name: Try and fix docker
+        run: |
+          if [ -f /etc/docker/daemon.json ]; then
+            sudo jq '.features."containerd-snapshotter" = false' /etc/docker/daemon.json > /tmp/daemon.json
+            sudo mv /tmp/daemon.json /etc/docker/daemon.json
+            else
+            echo '{"features": {"containerd-snapshotter": false}}' | sudo tee /etc/docker/daemon.json
+          fi
+          sudo systemctl restart docker          
+
       - name: Build
         run: ./gradlew build
 
