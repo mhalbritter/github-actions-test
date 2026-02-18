@@ -1,4 +1,4 @@
-name: Java CI with Java 25
+name: Run Spring Boot's System Test
 
 on:
   workflow_dispatch:
