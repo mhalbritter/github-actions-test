@@ -29,14 +29,14 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-bootJar {
-    manifest {
-        attributes(
-                'Implementation-Version': '1.0.0',
-                'Implementation-Title': "Paketo Test"
-        )
-    }
-}
+//bootJar {
+//    manifest {
+//        attributes(
+//                'Implementation-Version': '1.0.0',
+//                'Implementation-Title': "Paketo Test"
+//        )
+//    }
+//}
 
 //application {
 //    mainClass = 'com.example.demo.DemoApplication'
