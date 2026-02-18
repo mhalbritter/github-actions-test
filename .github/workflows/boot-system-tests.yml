@@ -19,6 +19,16 @@ jobs:
           fi
           sudo systemctl restart docker
 
+      - name: Show docker info
+        if: always()
+        shell: bash
+        run: docker version ; docker info
+
+      - name: List docker images
+        if: always()
+        shell: bash
+        run: docker image ls --digests
+
       - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
@@ -41,13 +51,3 @@ jobs:
         run: |
           cd spring-boot
           ./gradlew systemTest -PtoolchainVersion=21
-
-      - name: Show docker version
-        if: always()
-        shell: bash
-        run: docker version
-
-      - name: List docker images
-        if: always()
-        shell: bash
-        run: docker image ls --digests
