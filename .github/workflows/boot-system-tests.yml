@@ -8,6 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fix docker
+        shell: bash
+        run: |
+          if [ -f /etc/docker/daemon.json ]; then
+            sudo jq '.features."containerd-snapshotter" = false' /etc/docker/daemon.json > /tmp/daemon.json
+            sudo mv /tmp/daemon.json /etc/docker/daemon.json
+            else
+            echo '{"features": {"containerd-snapshotter": false}}' | sudo tee /etc/docker/daemon.json
+          fi
+          sudo systemctl restart docker
+
       - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
